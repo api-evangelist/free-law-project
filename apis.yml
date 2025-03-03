@@ -3,9 +3,12 @@ url: >-
   https://raw.githubusercontent.com/api-evangelist/free-law-project/refs/heads/main/apis.yml
 apis:
   - aid: free-law-project:free-law-project
-    name: Free Law Project
+    name: Free Law Project API
     tags:
-      - API
+      - Legal
+      - Courts
+      - Justice
+      - Transparency
     humanURL: ' https://free.law/'
     properties:
       - url: ' https://free.law/'
