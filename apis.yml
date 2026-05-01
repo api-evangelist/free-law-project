@@ -8,7 +8,7 @@ type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 created: '2025-01-07'
-modified: '2026-03-16'
+modified: '2026-04-28'
 position: Consumer
 tags:
   - Courts
@@ -27,18 +27,22 @@ apis:
       - Legal
       - Transparency
     humanURL: https://free.law/
-    baseURL: https://www.courtlistener.com/api
+    baseURL: https://www.courtlistener.com/api/rest/v4
     properties:
-      - url: https://www.courtlistener.com/api/rest/v3/
+      - url: https://www.courtlistener.com/help/api/rest/
         type: Documentation
+      - url: >-
+          https://raw.githubusercontent.com/api-evangelist/free-law-project/refs/heads/main/openapi/free-law-project-openapi.yml
+        type: OpenAPI
     description: >-
-      The Free Law Project API provides access to court cases, statutes,
-      regulations, and other legal documents.
+      The Free Law Project / CourtListener REST API provides access to case
+      law, PACER data, the RECAP archive, oral arguments, judges, financial
+      disclosures, citations, alerts, and tags.
 common:
   - type: Website
     url: https://free.law/
   - type: Documentation
-    url: https://www.courtlistener.com/api/rest/v3/
+    url: https://www.courtlistener.com/help/api/rest/
   - type: GitHub Organization
     url: https://github.com/freelawproject
 maintainers:
