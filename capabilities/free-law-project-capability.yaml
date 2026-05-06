@@ -1,0 +1,549 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Free Law Project / CourtListener REST API
+  description: The CourtListener REST API (operated by Free Law Project) provides programmatic access to case law, PACER data,
+    the RECAP archive, oral arguments, judges, financial disclosures, citations, citation networks, alerts, tags, and visualizations.
+  tags:
+  - Free
+  - Law
+  - Project
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: free-law-project
+    baseUri: https://www.courtlistener.com/api/rest/v4
+    description: Free Law Project / CourtListener REST API HTTP API.
+    authentication:
+      type: apikey
+      in: header
+      name: Authorization
+      value: '{{FREE_LAW_PROJECT_TOKEN}}'
+    resources:
+    - name: search
+      path: /search/
+      operations:
+      - name: search
+        method: GET
+        description: Search across CourtListener
+        inputParameters:
+        - name: q
+          in: query
+          type: string
+          description: Search query string.
+        - name: type
+          in: query
+          type: string
+          description: Result type (e.g., o for opinions, r for RECAP, oa for oral arguments, p for people).
+        - name: order_by
+          in: query
+          type: string
+        - name: page
+          in: query
+          type: integer
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: opinions
+      path: /opinions/
+      operations:
+      - name: listopinions
+        method: GET
+        description: List opinions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: opinions-id
+      path: /opinions/{id}/
+      operations:
+      - name: getopinion
+        method: GET
+        description: Retrieve an opinion
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: clusters
+      path: /clusters/
+      operations:
+      - name: listclusters
+        method: GET
+        description: List opinion clusters
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: dockets
+      path: /dockets/
+      operations:
+      - name: listdockets
+        method: GET
+        description: List dockets
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: docket-entries
+      path: /docket-entries/
+      operations:
+      - name: listdocketentries
+        method: GET
+        description: List docket entries
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: recap-documents
+      path: /recap-documents/
+      operations:
+      - name: listrecapdocuments
+        method: GET
+        description: List RECAP documents
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: audio
+      path: /audio/
+      operations:
+      - name: listoralarguments
+        method: GET
+        description: List oral arguments
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: people
+      path: /people/
+      operations:
+      - name: listpeople
+        method: GET
+        description: List judges and people
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: positions
+      path: /positions/
+      operations:
+      - name: listpositions
+        method: GET
+        description: List judicial positions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: financial-disclosures
+      path: /financial-disclosures/
+      operations:
+      - name: listfinancialdisclosures
+        method: GET
+        description: List financial disclosures
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: citation-lookup
+      path: /citation-lookup/
+      operations:
+      - name: lookupcitations
+        method: POST
+        description: Lookup citations in text
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: alerts
+      path: /alerts/
+      operations:
+      - name: listalerts
+        method: GET
+        description: List alerts
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createalert
+        method: POST
+        description: Create an alert
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: tag
+      path: /tag/
+      operations:
+      - name: listtags
+        method: GET
+        description: List tags
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: free-law-project-rest
+    description: REST adapter for Free Law Project / CourtListener REST API.
+    resources:
+    - path: /search/
+      name: search
+      operations:
+      - method: GET
+        name: search
+        description: Search across CourtListener
+        call: free-law-project.search
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /opinions/
+      name: listopinions
+      operations:
+      - method: GET
+        name: listopinions
+        description: List opinions
+        call: free-law-project.listopinions
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /opinions/{id}/
+      name: getopinion
+      operations:
+      - method: GET
+        name: getopinion
+        description: Retrieve an opinion
+        call: free-law-project.getopinion
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /clusters/
+      name: listclusters
+      operations:
+      - method: GET
+        name: listclusters
+        description: List opinion clusters
+        call: free-law-project.listclusters
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /dockets/
+      name: listdockets
+      operations:
+      - method: GET
+        name: listdockets
+        description: List dockets
+        call: free-law-project.listdockets
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /docket-entries/
+      name: listdocketentries
+      operations:
+      - method: GET
+        name: listdocketentries
+        description: List docket entries
+        call: free-law-project.listdocketentries
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /recap-documents/
+      name: listrecapdocuments
+      operations:
+      - method: GET
+        name: listrecapdocuments
+        description: List RECAP documents
+        call: free-law-project.listrecapdocuments
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /audio/
+      name: listoralarguments
+      operations:
+      - method: GET
+        name: listoralarguments
+        description: List oral arguments
+        call: free-law-project.listoralarguments
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /people/
+      name: listpeople
+      operations:
+      - method: GET
+        name: listpeople
+        description: List judges and people
+        call: free-law-project.listpeople
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /positions/
+      name: listpositions
+      operations:
+      - method: GET
+        name: listpositions
+        description: List judicial positions
+        call: free-law-project.listpositions
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /financial-disclosures/
+      name: listfinancialdisclosures
+      operations:
+      - method: GET
+        name: listfinancialdisclosures
+        description: List financial disclosures
+        call: free-law-project.listfinancialdisclosures
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /citation-lookup/
+      name: lookupcitations
+      operations:
+      - method: POST
+        name: lookupcitations
+        description: Lookup citations in text
+        call: free-law-project.lookupcitations
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /alerts/
+      name: listalerts
+      operations:
+      - method: GET
+        name: listalerts
+        description: List alerts
+        call: free-law-project.listalerts
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /alerts/
+      name: createalert
+      operations:
+      - method: POST
+        name: createalert
+        description: Create an alert
+        call: free-law-project.createalert
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /tag/
+      name: listtags
+      operations:
+      - method: GET
+        name: listtags
+        description: List tags
+        call: free-law-project.listtags
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: free-law-project-mcp
+    transport: http
+    description: MCP adapter for Free Law Project / CourtListener REST API for AI agent use.
+    tools:
+    - name: search
+      description: Search across CourtListener
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: free-law-project.search
+      with:
+        q: tools.q
+        type: tools.type
+        order_by: tools.order_by
+        page: tools.page
+      inputParameters:
+      - name: q
+        type: string
+        description: Search query string.
+      - name: type
+        type: string
+        description: Result type (e.g., o for opinions, r for RECAP, oa for oral arguments, p for people).
+      - name: order_by
+        type: string
+        description: order_by
+      - name: page
+        type: integer
+        description: page
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listopinions
+      description: List opinions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: free-law-project.listopinions
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getopinion
+      description: Retrieve an opinion
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: free-law-project.getopinion
+      with:
+        id: tools.id
+      inputParameters:
+      - name: id
+        type: integer
+        description: id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listclusters
+      description: List opinion clusters
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: free-law-project.listclusters
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listdockets
+      description: List dockets
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: free-law-project.listdockets
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listdocketentries
+      description: List docket entries
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: free-law-project.listdocketentries
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listrecapdocuments
+      description: List RECAP documents
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: free-law-project.listrecapdocuments
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listoralarguments
+      description: List oral arguments
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: free-law-project.listoralarguments
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listpeople
+      description: List judges and people
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: free-law-project.listpeople
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listpositions
+      description: List judicial positions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: free-law-project.listpositions
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listfinancialdisclosures
+      description: List financial disclosures
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: free-law-project.listfinancialdisclosures
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: lookupcitations
+      description: Lookup citations in text
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: free-law-project.lookupcitations
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listalerts
+      description: List alerts
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: free-law-project.listalerts
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createalert
+      description: Create an alert
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: free-law-project.createalert
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listtags
+      description: List tags
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: free-law-project.listtags
+      outputParameters:
+      - type: object
+        mapping: $.
+binds:
+- namespace: env
+  keys:
+    FREE_LAW_PROJECT_TOKEN: FREE_LAW_PROJECT_TOKEN
