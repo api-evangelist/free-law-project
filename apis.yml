@@ -43,7 +43,7 @@ common:
     url: https://free.law/
   - type: Documentation
     url: https://www.courtlistener.com/help/api/rest/
-  - type: GitHub Organization
+  - type: GitHubOrganization
     url: https://github.com/freelawproject
 maintainers:
   - FN: Kin Lane
