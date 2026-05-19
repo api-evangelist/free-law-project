@@ -1,0 +1,145 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Free Law Project / CourtListener REST API — Case Law
+  description: 'Free Law Project / CourtListener REST API — Case Law. 3 operations. Lead operation: List opinion clusters.
+    Self-contained Naftiko capability covering one Free Law Project business surface.'
+  tags:
+  - Free Law Project
+  - Case Law
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    FREE_LAW_PROJECT_API_KEY: FREE_LAW_PROJECT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: free-law-project-case-law
+    baseUri: https://www.courtlistener.com/api/rest/v4
+    description: Free Law Project / CourtListener REST API — Case Law business capability. Self-contained, no shared references.
+    resources:
+    - name: clusters
+      path: /clusters/
+      operations:
+      - name: listclusters
+        method: GET
+        description: List opinion clusters
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: opinions
+      path: /opinions/
+      operations:
+      - name: listopinions
+        method: GET
+        description: List opinions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: opinions-id
+      path: /opinions/{id}/
+      operations:
+      - name: getopinion
+        method: GET
+        description: Retrieve an opinion
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.FREE_LAW_PROJECT_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: free-law-project-case-law-rest
+    port: 8080
+    description: REST adapter for Free Law Project / CourtListener REST API — Case Law. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/clusters
+      name: clusters
+      description: REST surface for clusters.
+      operations:
+      - method: GET
+        name: listclusters
+        description: List opinion clusters
+        call: free-law-project-case-law.listclusters
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/opinions
+      name: opinions
+      description: REST surface for opinions.
+      operations:
+      - method: GET
+        name: listopinions
+        description: List opinions
+        call: free-law-project-case-law.listopinions
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/opinions/{id}
+      name: opinions-id
+      description: REST surface for opinions-id.
+      operations:
+      - method: GET
+        name: getopinion
+        description: Retrieve an opinion
+        call: free-law-project-case-law.getopinion
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: free-law-project-case-law-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Free Law Project / CourtListener REST API — Case Law. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: list-opinion-clusters
+      description: List opinion clusters
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: free-law-project-case-law.listclusters
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-opinions
+      description: List opinions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: free-law-project-case-law.listopinions
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieve-opinion
+      description: Retrieve an opinion
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: free-law-project-case-law.getopinion
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.

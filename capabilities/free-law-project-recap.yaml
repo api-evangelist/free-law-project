@@ -1,0 +1,72 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Free Law Project / CourtListener REST API — RECAP
+  description: 'Free Law Project / CourtListener REST API — RECAP. 1 operations. Lead operation: List RECAP documents. Self-contained
+    Naftiko capability covering one Free Law Project business surface.'
+  tags:
+  - Free Law Project
+  - RECAP
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    FREE_LAW_PROJECT_API_KEY: FREE_LAW_PROJECT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: free-law-project-recap
+    baseUri: https://www.courtlistener.com/api/rest/v4
+    description: Free Law Project / CourtListener REST API — RECAP business capability. Self-contained, no shared references.
+    resources:
+    - name: recap-documents
+      path: /recap-documents/
+      operations:
+      - name: listrecapdocuments
+        method: GET
+        description: List RECAP documents
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.FREE_LAW_PROJECT_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: free-law-project-recap-rest
+    port: 8080
+    description: REST adapter for Free Law Project / CourtListener REST API — RECAP. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/recap-documents
+      name: recap-documents
+      description: REST surface for recap-documents.
+      operations:
+      - method: GET
+        name: listrecapdocuments
+        description: List RECAP documents
+        call: free-law-project-recap.listrecapdocuments
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: free-law-project-recap-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Free Law Project / CourtListener REST API — RECAP. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: list-recap-documents
+      description: List RECAP documents
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: free-law-project-recap.listrecapdocuments
+      outputParameters:
+      - type: object
+        mapping: $.

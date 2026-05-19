@@ -1,0 +1,104 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Free Law Project / CourtListener REST API — PACER
+  description: 'Free Law Project / CourtListener REST API — PACER. 2 operations. Lead operation: List docket entries. Self-contained
+    Naftiko capability covering one Free Law Project business surface.'
+  tags:
+  - Free Law Project
+  - PACER
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    FREE_LAW_PROJECT_API_KEY: FREE_LAW_PROJECT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: free-law-project-pacer
+    baseUri: https://www.courtlistener.com/api/rest/v4
+    description: Free Law Project / CourtListener REST API — PACER business capability. Self-contained, no shared references.
+    resources:
+    - name: docket-entries
+      path: /docket-entries/
+      operations:
+      - name: listdocketentries
+        method: GET
+        description: List docket entries
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: dockets
+      path: /dockets/
+      operations:
+      - name: listdockets
+        method: GET
+        description: List dockets
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.FREE_LAW_PROJECT_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: free-law-project-pacer-rest
+    port: 8080
+    description: REST adapter for Free Law Project / CourtListener REST API — PACER. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/docket-entries
+      name: docket-entries
+      description: REST surface for docket-entries.
+      operations:
+      - method: GET
+        name: listdocketentries
+        description: List docket entries
+        call: free-law-project-pacer.listdocketentries
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/dockets
+      name: dockets
+      description: REST surface for dockets.
+      operations:
+      - method: GET
+        name: listdockets
+        description: List dockets
+        call: free-law-project-pacer.listdockets
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: free-law-project-pacer-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Free Law Project / CourtListener REST API — PACER. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: list-docket-entries
+      description: List docket entries
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: free-law-project-pacer.listdocketentries
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-dockets
+      description: List dockets
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: free-law-project-pacer.listdockets
+      outputParameters:
+      - type: object
+        mapping: $.
