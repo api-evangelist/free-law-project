@@ -1,0 +1,383 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Free Law Project / CourtListener REST API",
+    "version": "4.3"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search across CourtListener",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.courtlistener.com/api/rest/v4/search/",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search query string."
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Result type (e.g., o for opinions, r for RECAP, oa for oral arguments, p for people)."
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Full-text and faceted search across opinions, dockets, oral arguments, judges, and more."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Case Law",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List opinions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.courtlistener.com/api/rest/v4/opinions/",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to include."
+              },
+              {
+                "name": "omit",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to omit."
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "Field to order by; prefix with `-` for descending."
+              }
+            ]
+          },
+          "docs": "List opinions"
+        },
+        {
+          "info": {
+            "name": "Retrieve an opinion",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.courtlistener.com/api/rest/v4/opinions/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve an opinion"
+        },
+        {
+          "info": {
+            "name": "List opinion clusters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.courtlistener.com/api/rest/v4/clusters/",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List opinion clusters"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "PACER",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List dockets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.courtlistener.com/api/rest/v4/dockets/",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List dockets"
+        },
+        {
+          "info": {
+            "name": "List docket entries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.courtlistener.com/api/rest/v4/docket-entries/",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List docket entries"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "RECAP",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List RECAP documents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.courtlistener.com/api/rest/v4/recap-documents/",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List RECAP documents"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Oral Arguments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List oral arguments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.courtlistener.com/api/rest/v4/audio/",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List oral arguments"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Judges",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List judges and people",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.courtlistener.com/api/rest/v4/people/",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List judges and people"
+        },
+        {
+          "info": {
+            "name": "List judicial positions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.courtlistener.com/api/rest/v4/positions/",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List judicial positions"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Financial Disclosures",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List financial disclosures",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.courtlistener.com/api/rest/v4/financial-disclosures/",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List financial disclosures"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Citations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lookup citations in text",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.courtlistener.com/api/rest/v4/citation-lookup/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Lookup citations in text"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Alerts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List alerts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.courtlistener.com/api/rest/v4/alerts/"
+          },
+          "docs": "List alerts"
+        },
+        {
+          "info": {
+            "name": "Create an alert",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.courtlistener.com/api/rest/v4/alerts/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an alert"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Tags",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.courtlistener.com/api/rest/v4/tag/"
+          },
+          "docs": "List tags"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
