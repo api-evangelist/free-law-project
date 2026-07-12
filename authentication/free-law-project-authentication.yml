@@ -1,0 +1,16 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/free-law-project-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: TokenAuth
+  type: apiKey
+  in: header
+  parameter: Authorization
+  description: 'HTTP token authentication. Format: `Token <your-token>`.'
+  sources:
+  - openapi/free-law-project-openapi.yml

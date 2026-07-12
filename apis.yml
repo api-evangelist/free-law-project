@@ -36,6 +36,10 @@ apis:
       The Free Law Project / CourtListener REST API provides access to case law, PACER data, the RECAP archive, oral
       arguments, judges, financial disclosures, citations, alerts, and tags.
 common:
+  - type: DomainSecurity
+    url: security/free-law-project-domain-security.yml
+  - type: Authentication
+    url: authentication/free-law-project-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/free-law-project
   - type: Website
@@ -44,6 +48,8 @@ common:
     url: https://www.courtlistener.com/help/api/rest/
   - type: GitHubOrganization
     url: https://github.com/freelawproject
+  - url: https://free.law/feeds/all.atom.xml
+    type: Blog
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
