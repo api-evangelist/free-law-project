@@ -36,6 +36,8 @@ apis:
       The Free Law Project / CourtListener REST API provides access to case law, PACER data, the RECAP archive, oral
       arguments, judges, financial disclosures, citations, alerts, and tags.
 common:
+  - type: AgenticAccess
+    url: agentic-access/free-law-project-agentic-access.yml
   - type: DomainSecurity
     url: security/free-law-project-domain-security.yml
   - type: Authentication
