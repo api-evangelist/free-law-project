@@ -1,0 +1,33 @@
+openapi: 3.1.0
+info:
+  title: Free Law Project / CourtListener REST Alerts Tags API
+  description: The CourtListener REST API (operated by Free Law Project) provides programmatic access to case law, PACER data, the RECAP archive, oral arguments, judges, financial disclosures, citations, citation networks, alerts, tags, and visualizations.
+  version: '4.3'
+  contact:
+    name: Free Law Project
+    url: https://free.law/
+servers:
+- url: https://www.courtlistener.com/api/rest/v4
+  description: CourtListener REST API v4
+security:
+- TokenAuth: []
+tags:
+- name: Tags
+  description: User tags for organizing dockets.
+paths:
+  /tag/:
+    get:
+      summary: List tags
+      operationId: listTags
+      tags:
+      - Tags
+      responses:
+        '200':
+          description: Paginated list of tags.
+components:
+  securitySchemes:
+    TokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'HTTP token authentication. Format: `Token <your-token>`.'

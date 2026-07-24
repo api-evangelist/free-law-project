@@ -1,0 +1,73 @@
+openapi: 3.1.0
+info:
+  title: Free Law Project / CourtListener REST Alerts Search API
+  description: The CourtListener REST API (operated by Free Law Project) provides programmatic access to case law, PACER data, the RECAP archive, oral arguments, judges, financial disclosures, citations, citation networks, alerts, tags, and visualizations.
+  version: '4.3'
+  contact:
+    name: Free Law Project
+    url: https://free.law/
+servers:
+- url: https://www.courtlistener.com/api/rest/v4
+  description: CourtListener REST API v4
+security:
+- TokenAuth: []
+tags:
+- name: Search
+  description: Full-text and faceted search across CourtListener data.
+paths:
+  /search/:
+    get:
+      summary: Search across CourtListener
+      description: Full-text and faceted search across opinions, dockets, oral arguments, judges, and more.
+      operationId: search
+      tags:
+      - Search
+      parameters:
+      - name: q
+        in: query
+        description: Search query string.
+        schema:
+          type: string
+      - name: type
+        in: query
+        description: Result type (e.g., o for opinions, r for RECAP, oa for oral arguments, p for people).
+        schema:
+          type: string
+      - name: order_by
+        in: query
+        schema:
+          type: string
+      - name: page
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Search results.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedResponse'
+components:
+  schemas:
+    PaginatedResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type: string
+          nullable: true
+        previous:
+          type: string
+          nullable: true
+        results:
+          type: array
+          items:
+            type: object
+  securitySchemes:
+    TokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'HTTP token authentication. Format: `Token <your-token>`.'
