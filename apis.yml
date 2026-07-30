@@ -4,7 +4,20 @@ description: >-
   Free Law Project is a non-profit organization that seeks to increase access to justice and transparency in the legal
   system through the use of technology and open data.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/free-law-project.png
 access: 3rd-Party
 created: '2025-01-07'
 modified: '2026-05-19'
@@ -17,24 +30,126 @@ tags:
 url: https://raw.githubusercontent.com/api-evangelist/free-law-project/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
-  - aid: free-law-project:free-law-project
-    name: Free Law Project API
-    tags:
-      - Courts
-      - Justice
-      - Legal
-      - Transparency
-    humanURL: https://free.law/
-    baseURL: https://www.courtlistener.com/api/rest/v4
-    properties:
-      - url: https://www.courtlistener.com/help/api/rest/
-        type: Documentation
-      - url: >-
-          https://raw.githubusercontent.com/api-evangelist/free-law-project/refs/heads/main/openapi/free-law-project-openapi.yml
-        type: OpenAPI
-    description: >-
-      The Free Law Project / CourtListener REST API provides access to case law, PACER data, the RECAP archive, oral
-      arguments, judges, financial disclosures, citations, alerts, and tags.
+- aid: free-law-project:free-law-project-alerts-api
+  name: Free Law Project Alerts API
+  description: User-defined alerts on search queries.
+  humanURL: https://free.law/
+  baseURL: https://www.courtlistener.com/api/rest/v4
+  tags:
+  - Alerts
+  properties:
+  - type: OpenAPI
+    url: openapi/free-law-project-alerts-api-openapi.yml
+  - type: Documentation
+    url: https://www.courtlistener.com/help/api/rest/
+- aid: free-law-project:free-law-project-case-law-api
+  name: Free Law Project Case Law API
+  description: Opinions, clusters, dockets, and courts.
+  humanURL: https://free.law/
+  baseURL: https://www.courtlistener.com/api/rest/v4
+  tags:
+  - Case Law
+  properties:
+  - type: OpenAPI
+    url: openapi/free-law-project-case-law-api-openapi.yml
+  - type: Documentation
+    url: https://www.courtlistener.com/help/api/rest/
+- aid: free-law-project:free-law-project-citations-api
+  name: Free Law Project Citations API
+  description: Citation lookup and verification.
+  humanURL: https://free.law/
+  baseURL: https://www.courtlistener.com/api/rest/v4
+  tags:
+  - Citations
+  properties:
+  - type: OpenAPI
+    url: openapi/free-law-project-citations-api-openapi.yml
+  - type: Documentation
+    url: https://www.courtlistener.com/help/api/rest/
+- aid: free-law-project:free-law-project-financial-disclosures-api
+  name: Free Law Project Financial Disclosures API
+  description: Federal and state judge financial disclosure filings.
+  humanURL: https://free.law/
+  baseURL: https://www.courtlistener.com/api/rest/v4
+  tags:
+  - Financial Disclosures
+  properties:
+  - type: OpenAPI
+    url: openapi/free-law-project-financial-disclosures-api-openapi.yml
+  - type: Documentation
+    url: https://www.courtlistener.com/help/api/rest/
+- aid: free-law-project:free-law-project-judges-api
+  name: Free Law Project Judges API
+  description: Judges, positions, education, and political affiliations.
+  humanURL: https://free.law/
+  baseURL: https://www.courtlistener.com/api/rest/v4
+  tags:
+  - Judges
+  properties:
+  - type: OpenAPI
+    url: openapi/free-law-project-judges-api-openapi.yml
+  - type: Documentation
+    url: https://www.courtlistener.com/help/api/rest/
+- aid: free-law-project:free-law-project-oral-arguments-api
+  name: Free Law Project Oral Arguments API
+  description: Oral argument audio recordings.
+  humanURL: https://free.law/
+  baseURL: https://www.courtlistener.com/api/rest/v4
+  tags:
+  - Oral Arguments
+  properties:
+  - type: OpenAPI
+    url: openapi/free-law-project-oral-arguments-api-openapi.yml
+  - type: Documentation
+    url: https://www.courtlistener.com/help/api/rest/
+- aid: free-law-project:free-law-project-pacer-api
+  name: Free Law Project PACER API
+  description: PACER dockets, entries, and documents.
+  humanURL: https://free.law/
+  baseURL: https://www.courtlistener.com/api/rest/v4
+  tags:
+  - PACER
+  properties:
+  - type: OpenAPI
+    url: openapi/free-law-project-pacer-api-openapi.yml
+  - type: Documentation
+    url: https://www.courtlistener.com/help/api/rest/
+- aid: free-law-project:free-law-project-recap-api
+  name: Free Law Project RECAP API
+  description: RECAP archive of public PACER documents.
+  humanURL: https://free.law/
+  baseURL: https://www.courtlistener.com/api/rest/v4
+  tags:
+  - RECAP
+  properties:
+  - type: OpenAPI
+    url: openapi/free-law-project-recap-api-openapi.yml
+  - type: Documentation
+    url: https://www.courtlistener.com/help/api/rest/
+- aid: free-law-project:free-law-project-search-api
+  name: Free Law Project Search API
+  description: Full-text and faceted search across CourtListener data.
+  humanURL: https://free.law/
+  baseURL: https://www.courtlistener.com/api/rest/v4
+  tags:
+  - Search
+  properties:
+  - type: OpenAPI
+    url: openapi/free-law-project-search-api-openapi.yml
+  - type: Documentation
+    url: https://www.courtlistener.com/help/api/rest/
+- aid: free-law-project:free-law-project-tags-api
+  name: Free Law Project Tags API
+  description: User tags for organizing dockets.
+  humanURL: https://free.law/
+  baseURL: https://www.courtlistener.com/api/rest/v4
+  tags:
+  - Tags
+  properties:
+  - type: OpenAPI
+    url: openapi/free-law-project-tags-api-openapi.yml
+  - type: Documentation
+    url: https://www.courtlistener.com/help/api/rest/
 common:
   - type: AgenticAccess
     url: agentic-access/free-law-project-agentic-access.yml
