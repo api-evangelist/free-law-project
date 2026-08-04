@@ -1,0 +1,32 @@
+{
+  "provider": "free-law-project",
+  "sources": [
+    "free-law-project-alerts-api-openapi.yml",
+    "free-law-project-case-law-api-openapi.yml",
+    "free-law-project-citations-api-openapi.yml",
+    "free-law-project-financial-disclosures-api-openapi.yml",
+    "free-law-project-judges-api-openapi.yml",
+    "free-law-project-oral-arguments-api-openapi.yml",
+    "free-law-project-pacer-api-openapi.yml",
+    "free-law-project-recap-api-openapi.yml",
+    "free-law-project-search-api-openapi.yml",
+    "free-law-project-tags-api-openapi.yml"
+  ],
+  "outputs": [
+    "free-law-project-alerts-api-openapi.yml",
+    "free-law-project-case-law-api-openapi.yml",
+    "free-law-project-citations-api-openapi.yml",
+    "free-law-project-financial-disclosures-api-openapi.yml",
+    "free-law-project-judges-api-openapi.yml",
+    "free-law-project-oral-arguments-api-openapi.yml",
+    "free-law-project-pacer-api-openapi.yml",
+    "free-law-project-recap-api-openapi.yml",
+    "free-law-project-search-api-openapi.yml",
+    "free-law-project-tags-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

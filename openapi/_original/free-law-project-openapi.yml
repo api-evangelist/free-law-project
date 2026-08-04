@@ -1,0 +1,290 @@
+openapi: 3.1.0
+info:
+  title: Free Law Project / CourtListener REST API
+  description: >-
+    The CourtListener REST API (operated by Free Law Project) provides
+    programmatic access to case law, PACER data, the RECAP archive, oral
+    arguments, judges, financial disclosures, citations, citation networks,
+    alerts, tags, and visualizations.
+  version: '4.3'
+  contact:
+    name: Free Law Project
+    url: https://free.law/
+servers:
+  - url: https://www.courtlistener.com/api/rest/v4
+    description: CourtListener REST API v4
+tags:
+  - name: Case Law
+    description: Opinions, clusters, dockets, and courts.
+  - name: PACER
+    description: PACER dockets, entries, and documents.
+  - name: RECAP
+    description: RECAP archive of public PACER documents.
+  - name: Oral Arguments
+    description: Oral argument audio recordings.
+  - name: Judges
+    description: Judges, positions, education, and political affiliations.
+  - name: Financial Disclosures
+    description: Federal and state judge financial disclosure filings.
+  - name: Search
+    description: Full-text and faceted search across CourtListener data.
+  - name: Citations
+    description: Citation lookup and verification.
+  - name: Alerts
+    description: User-defined alerts on search queries.
+  - name: Tags
+    description: User tags for organizing dockets.
+paths:
+  /search/:
+    get:
+      summary: Search across CourtListener
+      description: Full-text and faceted search across opinions, dockets, oral arguments, judges, and more.
+      operationId: search
+      tags:
+        - Search
+      parameters:
+        - name: q
+          in: query
+          description: Search query string.
+          schema:
+            type: string
+        - name: type
+          in: query
+          description: Result type (e.g., o for opinions, r for RECAP, oa for oral arguments, p for people).
+          schema:
+            type: string
+        - name: order_by
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Search results.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedResponse'
+  /opinions/:
+    get:
+      summary: List opinions
+      operationId: listOpinions
+      tags:
+        - Case Law
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Fields'
+        - $ref: '#/components/parameters/Omit'
+        - $ref: '#/components/parameters/OrderBy'
+      responses:
+        '200':
+          description: Paginated list of opinions.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedResponse'
+  /opinions/{id}/:
+    get:
+      summary: Retrieve an opinion
+      operationId: getOpinion
+      tags:
+        - Case Law
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Opinion detail.
+  /clusters/:
+    get:
+      summary: List opinion clusters
+      operationId: listClusters
+      tags:
+        - Case Law
+      parameters:
+        - $ref: '#/components/parameters/Page'
+      responses:
+        '200':
+          description: Paginated list of clusters.
+  /dockets/:
+    get:
+      summary: List dockets
+      operationId: listDockets
+      tags:
+        - PACER
+      parameters:
+        - $ref: '#/components/parameters/Page'
+      responses:
+        '200':
+          description: Paginated list of dockets.
+  /docket-entries/:
+    get:
+      summary: List docket entries
+      operationId: listDocketEntries
+      tags:
+        - PACER
+      parameters:
+        - $ref: '#/components/parameters/Page'
+      responses:
+        '200':
+          description: Paginated list of docket entries.
+  /recap-documents/:
+    get:
+      summary: List RECAP documents
+      operationId: listRecapDocuments
+      tags:
+        - RECAP
+      parameters:
+        - $ref: '#/components/parameters/Page'
+      responses:
+        '200':
+          description: Paginated list of RECAP documents.
+  /audio/:
+    get:
+      summary: List oral arguments
+      operationId: listOralArguments
+      tags:
+        - Oral Arguments
+      parameters:
+        - $ref: '#/components/parameters/Page'
+      responses:
+        '200':
+          description: Paginated list of oral arguments.
+  /people/:
+    get:
+      summary: List judges and people
+      operationId: listPeople
+      tags:
+        - Judges
+      parameters:
+        - $ref: '#/components/parameters/Page'
+      responses:
+        '200':
+          description: Paginated list of people.
+  /positions/:
+    get:
+      summary: List judicial positions
+      operationId: listPositions
+      tags:
+        - Judges
+      parameters:
+        - $ref: '#/components/parameters/Page'
+      responses:
+        '200':
+          description: Paginated list of positions.
+  /financial-disclosures/:
+    get:
+      summary: List financial disclosures
+      operationId: listFinancialDisclosures
+      tags:
+        - Financial Disclosures
+      parameters:
+        - $ref: '#/components/parameters/Page'
+      responses:
+        '200':
+          description: Paginated list of disclosures.
+  /citation-lookup/:
+    post:
+      summary: Lookup citations in text
+      operationId: lookupCitations
+      tags:
+        - Citations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+      responses:
+        '200':
+          description: Resolved citations.
+  /alerts/:
+    get:
+      summary: List alerts
+      operationId: listAlerts
+      tags:
+        - Alerts
+      responses:
+        '200':
+          description: Paginated list of alerts.
+    post:
+      summary: Create an alert
+      operationId: createAlert
+      tags:
+        - Alerts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '201':
+          description: Alert created.
+  /tag/:
+    get:
+      summary: List tags
+      operationId: listTags
+      tags:
+        - Tags
+      responses:
+        '200':
+          description: Paginated list of tags.
+components:
+  securitySchemes:
+    TokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'HTTP token authentication. Format: `Token <your-token>`.'
+  parameters:
+    Page:
+      name: page
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+    Fields:
+      name: fields
+      in: query
+      schema:
+        type: string
+      description: Comma-separated list of fields to include.
+    Omit:
+      name: omit
+      in: query
+      schema:
+        type: string
+      description: Comma-separated list of fields to omit.
+    OrderBy:
+      name: order_by
+      in: query
+      schema:
+        type: string
+      description: Field to order by; prefix with `-` for descending.
+  schemas:
+    PaginatedResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type: string
+          nullable: true
+        previous:
+          type: string
+          nullable: true
+        results:
+          type: array
+          items:
+            type: object
+security:
+  - TokenAuth: []
