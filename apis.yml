@@ -28,7 +28,7 @@ tags:
   - Legal
   - Transparency
 url: https://raw.githubusercontent.com/api-evangelist/free-law-project/refs/heads/main/apis.yml
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: free-law-project:free-law-project-alerts-api
   name: Free Law Project Alerts API
