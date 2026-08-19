@@ -1,0 +1,44 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Free Law Project / CourtListener REST Alerts Financial Disclosures API",
+    "version": "4.3"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Financial Disclosures",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List financial disclosures",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.courtlistener.com/api/rest/v4/financial-disclosures/",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List financial disclosures"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

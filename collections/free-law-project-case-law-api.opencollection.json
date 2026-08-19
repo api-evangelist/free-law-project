@@ -1,0 +1,98 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Free Law Project / CourtListener REST Alerts Case Law API",
+    "version": "4.3"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Case Law",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List opinions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.courtlistener.com/api/rest/v4/opinions/",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to include."
+              },
+              {
+                "name": "omit",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to omit."
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "Field to order by; prefix with `-` for descending."
+              }
+            ]
+          },
+          "docs": "List opinions"
+        },
+        {
+          "info": {
+            "name": "Retrieve an opinion",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.courtlistener.com/api/rest/v4/opinions/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve an opinion"
+        },
+        {
+          "info": {
+            "name": "List opinion clusters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.courtlistener.com/api/rest/v4/clusters/",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List opinion clusters"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

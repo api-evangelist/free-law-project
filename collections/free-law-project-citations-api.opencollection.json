@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Free Law Project / CourtListener REST Alerts Citations API",
+    "version": "4.3"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Citations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lookup citations in text",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.courtlistener.com/api/rest/v4/citation-lookup/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Lookup citations in text"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
