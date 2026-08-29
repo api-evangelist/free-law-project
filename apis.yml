@@ -4,6 +4,17 @@ description: >-
   Free Law Project is a non-profit organization that seeks to increase access to justice and transparency in the legal
   system through the use of technology and open data.
 type: Index
+deliveryModel:
+  model: unknown
+  open_source: false
+  commercial: false
+  callable_host: true
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - openapi
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
