@@ -1,16 +1,7 @@
 {
   "provider": "free-law-project",
   "sources": [
-    "free-law-project-alerts-api-openapi.yml",
-    "free-law-project-case-law-api-openapi.yml",
-    "free-law-project-citations-api-openapi.yml",
-    "free-law-project-financial-disclosures-api-openapi.yml",
-    "free-law-project-judges-api-openapi.yml",
-    "free-law-project-oral-arguments-api-openapi.yml",
-    "free-law-project-pacer-api-openapi.yml",
-    "free-law-project-recap-api-openapi.yml",
-    "free-law-project-search-api-openapi.yml",
-    "free-law-project-tags-api-openapi.yml"
+    "_original/free-law-project-openapi.yml"
   ],
   "outputs": [
     "free-law-project-alerts-api-openapi.yml",
@@ -27,6 +18,21 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "free-law-project-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "free-law-project-alerts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "free-law-project-case-law-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "free-law-project-citations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "free-law-project-financial-disclosures-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "free-law-project-judges-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "free-law-project-oral-arguments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "free-law-project-pacer-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "free-law-project-recap-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "free-law-project-search-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "free-law-project-tags-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
