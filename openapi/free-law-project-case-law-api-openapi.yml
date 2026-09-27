@@ -61,18 +61,18 @@ paths:
           description: Paginated list of clusters.
 components:
   parameters:
-    Omit:
-      name: omit
-      in: query
-      schema:
-        type: string
-      description: Comma-separated list of fields to omit.
     OrderBy:
       name: order_by
       in: query
       schema:
         type: string
       description: Field to order by; prefix with `-` for descending.
+    Omit:
+      name: omit
+      in: query
+      schema:
+        type: string
+      description: Comma-separated list of fields to omit.
     Fields:
       name: fields
       in: query
