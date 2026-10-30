@@ -1,4 +1,4 @@
-# Free Law Project (free-law-project)
+# Free Law Project
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,57 +66,134 @@
 
 Free Law Project is a non-profit organization that seeks to increase access to justice and transparency in the legal system through the use of technology and open data.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/free-law-project/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/free-law-project/refs/heads/main/apis.yml)
+**Areas:** Courts · Justice · Legal · Transparency
 
-## Scope
+## Free Law Project on APIs.io
 
-- **Type:** Index
-- **Position:** Consumer
-- **Access:** 3rd-Party
+Everything profiled for Free Law Project is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/free-law-project/](https://apis.io/providers/free-law-project/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (10)
 
-- Courts
-- Justice
-- Legal
-- Transparency
+- [Free Law Project Alerts API](https://apis.io/apis/free-law-project/free-law-project-alerts-api/) — User-defined alerts on search queries.
+- [Free Law Project Case Law API](https://apis.io/apis/free-law-project/free-law-project-case-law-api/) — Opinions, clusters, dockets, and courts.
+- [Free Law Project Citations API](https://apis.io/apis/free-law-project/free-law-project-citations-api/) — Citation lookup and verification.
+- [Free Law Project Financial Disclosures API](https://apis.io/apis/free-law-project/free-law-project-financial-disclosures-api/) — Federal and state judge financial disclosure filings.
+- [Free Law Project Judges API](https://apis.io/apis/free-law-project/free-law-project-judges-api/) — Judges, positions, education, and political affiliations.
+- [Free Law Project Oral Arguments API](https://apis.io/apis/free-law-project/free-law-project-oral-arguments-api/) — Oral argument audio recordings.
+- [Free Law Project PACER API](https://apis.io/apis/free-law-project/free-law-project-pacer-api/) — PACER dockets, entries, and documents.
+- [Free Law Project RECAP API](https://apis.io/apis/free-law-project/free-law-project-recap-api/) — RECAP archive of public PACER documents.
+- [Free Law Project Search API](https://apis.io/apis/free-law-project/free-law-project-search-api/) — Full-text and faceted search across CourtListener data.
+- [Free Law Project Tags API](https://apis.io/apis/free-law-project/free-law-project-tags-api/) — User tags for organizing dockets.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2025-01-07
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### Free Law Project API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-The Free Law Project / CourtListener REST API provides access to case law, PACER data, the RECAP archive, oral arguments, judges, financial disclosures, citations, alerts, and tags.
+- [Free Law Project Agentic Access](https://apis.io/agentic-access/free-law-project/free-law-project-agentic-access/)
 
-- **Human URL:** [https://free.law/](https://free.law/)
-- **Base URL:** `https://www.courtlistener.com/api/rest/v4`
+#### Collections (11)
 
-#### Tags
+Postman and Open Collection request collections.
 
-- Courts
-- Justice
-- Legal
-- Transparency
+- [Free Law Project / CourtListener REST API](https://apis.io/collections/free-law-project/open-free-law-project/)
+- [Free Law Project / CourtListener REST Alerts API](https://apis.io/collections/free-law-project/open-free-law-project-alerts-api/)
+- [Free Law Project / CourtListener REST Alerts Case Law API](https://apis.io/collections/free-law-project/open-free-law-project-case-law-api/)
+- [Free Law Project / CourtListener REST Alerts Citations API](https://apis.io/collections/free-law-project/open-free-law-project-citations-api/)
+- [Free Law Project / CourtListener REST Alerts Financial Disclosures API](https://apis.io/collections/free-law-project/open-free-law-project-financial-disclosures-api/)
+- [Free Law Project / CourtListener REST Alerts Judges API](https://apis.io/collections/free-law-project/open-free-law-project-judges-api/)
+- [Free Law Project / CourtListener REST Alerts Oral Arguments API](https://apis.io/collections/free-law-project/open-free-law-project-oral-arguments-api/)
+- [Free Law Project / CourtListener REST Alerts PACER API](https://apis.io/collections/free-law-project/open-free-law-project-pacer-api/)
+- [Free Law Project / CourtListener REST Alerts RECAP API](https://apis.io/collections/free-law-project/open-free-law-project-recap-api/)
+- [Free Law Project / CourtListener REST Alerts Search API](https://apis.io/collections/free-law-project/open-free-law-project-search-api/)
+- [Free Law Project / CourtListener REST Alerts Tags API](https://apis.io/collections/free-law-project/open-free-law-project-tags-api/)
 
-#### Properties
+#### Security (2)
 
-- [Documentation](https://www.courtlistener.com/help/api/rest/)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/free-law-project/refs/heads/main/openapi/free-law-project-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/free-law-project.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/free-law-project.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Authentication, trust centre, and vulnerability disclosure.
 
-## Common Properties
+- [Free Law Project Authentication](https://apis.io/security/free-law-project/free-law-project-authentication/)
+- [Free Law Project Domain Security](https://apis.io/security/free-law-project/free-law-project-domain-security/)
 
-- [LinkedIn](https://www.linkedin.com/company/free-law-project)
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Free Law Project Plans Pricing](https://apis.io/plans/free-law-project/free-law-project-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Free Law Project Rate Limits](https://apis.io/rate-limits/free-law-project/free-law-project-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Free Law Project Finops](https://apis.io/finops/free-law-project/free-law-project-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://free.law/)
 - [Documentation](https://www.courtlistener.com/help/api/rest/)
-- [GitHub Organization](https://github.com/freelawproject)
+- [Blog](https://free.law/feeds/all.atom.xml)
+- [GitHub](https://github.com/freelawproject)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 22.7** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 48.2 |
+| Contract quality | 45.7 |
+| Contract governance | 0.0 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 23.8 |
+| Access clarity | 7.9 |
+
+**Agent readiness 17.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 11.8** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/free-law-project/](https://apis.io/providers/free-law-project/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Free Law Project: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/free-law-project/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
